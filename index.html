@@ -2893,10 +2893,11 @@
                     // ... (restante do loop de renderização)
                 });
 
-                if (totalCals > 0) {
-                    document.getElementById('currentCalsContainer').innerText = Math.round(totalCals);
-                    document.getElementById('currentProtContainer').innerText = Math.round(totalProt) + 'g';
-                }
+                // Atualiza containers (mesmo que seja zero para reset diário)
+                const calsCont = document.getElementById('currentCalsContainer');
+                const protCont = document.getElementById('currentProtContainer');
+                if (calsCont) calsCont.innerText = Math.round(totalCals);
+                if (protCont) protCont.innerText = Math.round(totalProt) + 'g';
             } catch (e) { console.error("Erro ao carregar histórico alimentar:", e); }
         }
 
