@@ -267,13 +267,13 @@
             </div>
             <!-- BARRA DE CAPTURA RÁPIDA UNIFICADA -->
             <div class="flex justify-between gap-4 mb-6 p-1 bg-white/5 rounded-2xl border border-white/10">
-                <button onclick="startVoiceLogging()" id="voiceMicBtn" class="flex-1 py-4 flex flex-col items-center gap-2 hover:bg-rose-500/20 rounded-xl transition-all group">
+                <button id="voiceMicBtn" class="flex-1 py-4 flex flex-col items-center gap-2 hover:bg-rose-500/20 rounded-xl transition-all group">
                     <svg class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                     <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter group-hover:text-rose-300">Voz IA</span>
                 </button>
-                <button onclick="openScannerPortal()" class="flex-1 py-4 flex flex-col items-center gap-2 hover:bg-indigo-500/20 rounded-xl transition-all group">
+                <button onclick="window.location.href='scanner.html'" class="flex-1 py-4 flex flex-col items-center gap-2 hover:bg-indigo-500/20 rounded-xl transition-all group">
                     <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v-3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h2M4 8h12m-8 8h.01M4 16h4m4-12h.01M4 4h4v4H4V4zm12 0h4v4h-4V4zM4 12h4v4H4v-4z"></path></svg>
-                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter group-hover:text-indigo-300">Scanner QR</span>
+                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter group-hover:text-indigo-300">Scanner Turbo</span>
                 </button>
                 <button onclick="document.getElementById('food-camera-input').click()" class="flex-1 py-4 flex flex-col items-center gap-2 hover:bg-emerald-500/20 rounded-xl transition-all group overflow-hidden relative">
                     <div id="vision-loading" class="absolute inset-0 bg-emerald-600/40 flex items-center justify-center hidden">
@@ -476,22 +476,13 @@
             </div>
             <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-start shadow-lg border border-rose-500/20 w-full">
                 <div class="flex justify-between items-center w-full mb-4">
-                    <h3 class="text-rose-400 font-semibold">Nutrição Inteligente</h3>
+                    <h3 class="text-rose-400 font-semibold flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.989-2.386l-.548-.547z"></path></svg>
+                        Nutrição & Bioquímica
+                    </h3>
                     <div class="flex gap-2">
-                        <button id="voiceMicBtn" class="p-2 bg-fuchsia-500/20 hover:bg-fuchsia-500/40 rounded-lg transition" title="Log de Voz IA">
-                            <svg class="w-4 h-4 text-fuchsia-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                        </button>
-                        <button onclick="openManualFoodModal()" class="p-2 bg-rose-500/20 hover:bg-rose-500/40 rounded-lg transition" title="Adicionar Manualmente">
-                            <svg class="w-4 h-4 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                        </button>
-                        <button onclick="openScanner()" class="p-2 bg-indigo-500/20 hover:bg-indigo-500/40 rounded-lg transition" title="Escanear Código de Barras">
-                            <svg class="w-4 h-4 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
-                        </button>
-                        <button onclick="window.location.href='/camera.html'" class="p-2 bg-cyan-500/20 hover:bg-cyan-500/40 rounded-lg transition" title="Foto de Prato IA">
-                            <svg class="w-4 h-4 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </button>
-                        <button onclick="openSupplementModal()" class="p-2 bg-emerald-500/20 hover:bg-emerald-500/40 rounded-lg transition" title="Log Suplementos">
-                            <span class="text-emerald-300 text-sm font-bold">💊</span>
+                        <button onclick="openManualFoodModal()" class="px-4 py-2 bg-rose-500 hover:bg-rose-400 text-white font-black rounded-xl shadow-lg shadow-rose-500/30 transition-all text-xs flex items-center gap-2">
+                            <span>+</span> ADICIONAR ALIMENTO
                         </button>
                     </div>
                 </div>
@@ -3053,17 +3044,26 @@
 
 
                 try {
+                    // Log de Auditoria no Console do Navegador antes de enviar
+                    console.log("[PRE-SUBMIT]", payload);
+                    
                     const r = await fetch('/api/confirm_food', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
                         body: JSON.stringify(payload)
                     });
                     if (r.ok) {
                         closeManualFoodModal();
                         fetchFoodHistory();
                         foodForm.reset();
+                    } else {
+                        const errData = await r.json();
+                        alert("Erro no servidor: " + (errData.error || "Erro desconhecido"));
                     }
-                } catch (err) { alert("Erro ao salvar alimento."); }
+                } catch (err) { alert("Erro de rede ao salvar: " + err.message); }
             });
         }
 
