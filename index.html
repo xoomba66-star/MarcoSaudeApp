@@ -518,54 +518,41 @@
             <h2 class="text-3xl font-bold mb-2 text-slate-100 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">Mapa Antropométrico Interativo</h2>
             <p class="text-slate-400 mb-8 text-center max-w-2xl">Clique nas regiões corporais demarcadas para explodir os gráficos longitudinais correspondentes. As medidas refletem a última detecção dos sensores biométricos.</p>
             
-            <div id="anatomy-tooltip" class="fixed hidden bg-slate-900 border border-teal-500/50 text-teal-300 px-4 py-2 rounded-lg text-sm font-bold shadow-[0_0_15px_rgba(45,212,191,0.2)] pointer-events-none z-[70] transition-opacity duration-200"></div>
-            
-            <div id="organ-popup" class="fixed hidden flex-col bg-slate-900/90 backdrop-blur-xl border-l-[4px] border-l-rose-500 border border-slate-700/50 p-4 rounded-xl shadow-2xl z-[80] w-72 transition-all duration-300">
-                <div class="flex justify-between items-center mb-3">
-                    <h3 id="organ-title" class="text-xl font-black text-rose-400">Órgão</h3>
-                    <button onclick="document.getElementById('organ-popup').classList.add('hidden')" class="text-slate-400 hover:text-white transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
-                <div id="organ-exam-list" class="flex flex-col space-y-2 max-h-64 overflow-y-auto custom-scrollbar pr-2">
-                    <!-- Lista injetada aqui -->
-                </div>
-            </div>
-            
-            
-            <div class="relative w-full max-w-xl mx-auto aspect-[1/2] rounded-[30px] overflow-hidden shadow-[0_0_50px_rgba(45,212,191,0.2)] border border-slate-700/50">
-                <img src="assets/clinical_body_new.png" alt="Clinical Anatomy" class="absolute inset-0 w-full h-full object-contain z-0 opacity-100" />
-                <svg id="humanBodySVG" viewBox="0 0 300 600" class="absolute inset-0 w-full h-full z-10" style="mix-blend-mode: color-dodge;">
-                    <!-- Hitboxes with hover effects -->
-                    
-                    <g id="structural-layer">
-                        <path id="svg-torax" d="M100,145 L200,145 L195,210 L105,210 Z" class="body-part fill-transparent hover:fill-slate-500/20 cursor-crosshair transition-all duration-300" data-part="Tórax" data-scroll="anatomyChart" />
-                        <path id="svg-cintura" d="M105,210 L195,210 L190,270 L110,270 Z" class="body-part fill-transparent hover:fill-indigo-500/30 cursor-crosshair transition-all duration-300" data-part="Cintura" data-scroll="anatomyChart" />
-                        <path id="svg-quadril" d="M110,270 L190,270 L190,320 L110,320 Z" class="body-part fill-transparent hover:fill-teal-400/30 cursor-crosshair transition-all duration-300" data-part="Quadril" data-scroll="anatomyChart" />
-                        <path id="svg-braco-dir" d="M90,150 C70,160 60,250 50,320 L75,320 C80,250 90,170 100,160 Z" class="body-part fill-transparent hover:fill-teal-400/30 cursor-crosshair transition-all duration-300" data-part="Braço (Dir)" data-scroll="anatomyChart" />
-                        <path id="svg-braco-esq" d="M210,150 C230,160 240,250 250,320 L225,320 C220,250 210,170 200,160 Z" class="body-part fill-transparent hover:fill-teal-400/30 cursor-crosshair transition-all duration-300" data-part="Braço (Esq)" data-scroll="anatomyChart" />
-                        <path d="M115,325 L145,325 L145,550 L115,550 Z" class="body-part fill-transparent hover:fill-teal-400/30 cursor-crosshair transition-all duration-300" data-part="Perna (Dir)" />
-                        <path d="M155,325 L185,325 L185,550 L155,550 Z" class="body-part fill-transparent hover:fill-teal-400/30 cursor-crosshair transition-all duration-300" data-part="Perna (Esq)" />
+            <div class="relative w-full max-w-md mx-auto aspect-[1/2] bg-slate-900/50 rounded-[30px] border border-slate-700/50 overflow-visible shadow-[0_0_50px_rgba(45,212,191,0.1)]">
+                <!-- Imagem do Corpo: Agora como base do container -->
+                <img src="assets/clinical_body_new.png" alt="Clinical Anatomy" class="w-full h-full object-contain z-0" />
+                
+                <!-- SVG: Perfeitamente sobreposto à imagem -->
+                <svg id="humanBodySVG" viewBox="0 0 300 600" class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none" style="mix-blend-mode: plus-lighter;">
+                    <!-- Hitboxes: Ativando ponteiros de evento apenas nelas -->
+                    <g id="structural-layer" class="pointer-events-auto">
+                        <path id="svg-torax" d="M100,145 L200,145 L195,210 L105,210 Z" class="body-part fill-transparent hover:fill-teal-500/10 cursor-pointer transition-all duration-300" data-part="Tórax" data-scroll="anatomyChart" />
+                        <path id="svg-cintura" d="M105,210 L195,210 L190,270 L110,270 Z" class="body-part fill-transparent hover:fill-indigo-500/10 cursor-pointer transition-all duration-300" data-part="Cintura" data-scroll="anatomyChart" />
+                        <path id="svg-quadril" d="M110,270 L190,270 L190,320 L110,320 Z" class="body-part fill-transparent hover:fill-teal-400/10 cursor-pointer transition-all duration-300" data-part="Quadril" data-scroll="anatomyChart" />
+                        <path id="svg-braco-dir" d="M90,150 C70,160 60,250 50,320 L75,320 C80,250 90,170 100,160 Z" class="body-part fill-transparent hover:fill-teal-400/10 cursor-pointer transition-all duration-300" data-part="Braço (Dir)" data-scroll="anatomyChart" />
+                        <path id="svg-braco-esq" d="M210,150 C230,160 240,250 250,320 L225,320 C220,250 210,170 200,160 Z" class="body-part fill-transparent hover:fill-teal-400/10 cursor-pointer transition-all duration-300" data-part="Braço (Esq)" data-scroll="anatomyChart" />
                     </g>
                     
-                    <g id="organs-layer">
-                        <circle cx="150" cy="65" r="30" class="body-part fill-transparent hover:fill-transparent cursor-crosshair" data-part="Cabeça" data-org="Cérebro" />
-                        <path id="svg-neck" d="M135,100 L165,100 L165,130 L135,130 Z" class="body-part fill-transparent hover:fill-transparent cursor-crosshair" data-part="Pescoço" data-org="Tireoide" />
-                        
-                        <!-- Pulmão: Ajustado para y=150 -->
-                        <path id="svg-pulmao" d="M115,140 C100,150 105,200 135,210 C145,200 140,150 145,140 Z M185,140 C200,150 195,200 165,210 C155,200 160,150 155,140 Z" class="body-part fill-transparent hover:fill-transparent cursor-crosshair" data-part="Tórax" data-org="Pulmão" />
-                        
-                        <!-- Coração: Centralizado no peito (y=170) -->
-                        <path id="svg-coracao" d="M145,170 C145,160 165,160 165,175 C165,190 150,200 145,205 C140,200 125,190 125,175 C125,160 145,160 145,170 Z" class="body-part fill-transparent hover:fill-rose-500/10 stroke-transparent cursor-crosshair" data-part="Coração" data-org="Coração" />
-                        
-                        <!-- Fígado: Posicionado na região subcostal (y=215) -->
-                        <path id="svg-figado" d="M115,215 C115,200 170,205 180,230 C170,235 130,235 115,215 Z" class="body-part fill-transparent hover:fill-amber-500/10 stroke-transparent cursor-crosshair" data-part="Fígado" data-org="Fígado" />
-                        
-                        <!-- Abdômen: Área central (y=255) -->
-                        <path id="svg-abdomen" d="M110,255 L190,255 L185,325 L115,325 Z" class="body-part fill-transparent hover:fill-emerald-500/10 stroke-transparent cursor-crosshair" data-part="Abdomen" data-org="Abdomen" />
+                    <g id="organs-layer" class="pointer-events-auto">
+                        <circle cx="150" cy="70" r="35" class="body-part fill-transparent hover:fill-rose-500/10 cursor-pointer" data-part="Cabeça" data-org="Cérebro" />
+                        <path id="svg-neck" d="M135,110 L165,110 L165,140 L135,140 Z" class="body-part fill-transparent hover:fill-amber-500/10 cursor-pointer" data-part="Pescoço" data-org="Tireoide" />
+                        <path id="svg-pulmao" d="M115,150 C100,160 105,210 135,220 C145,210 140,160 145,150 Z M185,150 C200,160 195,210 165,220 C155,210 160,160 155,150 Z" class="body-part fill-transparent hover:fill-cyan-500/10 cursor-pointer" data-part="Tórax" data-org="Pulmão" />
+                        <path id="svg-coracao" d="M145,180 C145,170 165,170 165,185 C165,200 150,210 145,215 C140,210 125,200 125,185 C125,170 145,170 145,180 Z" class="body-part fill-transparent hover:fill-rose-500/20 cursor-pointer" data-part="Coração" data-org="Coração" />
                     </g>
                 </svg>
+
+                <!-- Tooltip e Popup agora são ABSOLUTOS ao container do corpo, para garantir que acompanhem a escala -->
+                <div id="anatomy-tooltip" class="absolute hidden bg-slate-900/90 border border-teal-500/50 text-teal-300 px-3 py-1.5 rounded-lg text-[10px] font-black shadow-xl pointer-events-none z-[70] transition-opacity duration-200 uppercase"></div>
+                
+                <div id="organ-popup" class="absolute hidden flex-col bg-slate-900/95 backdrop-blur-2xl border-l-[4px] border-l-rose-500 border border-slate-700/50 p-4 rounded-xl shadow-2xl z-[80] w-64 transition-all duration-200">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 id="organ-title" class="text-lg font-black text-rose-400 uppercase tracking-tighter">Órgão</h3>
+                        <button onclick="document.getElementById('organ-popup').classList.add('hidden')" class="text-slate-500 hover:text-white transition-colors">✕</button>
+                    </div>
+                    <div id="organ-exam-list" class="flex flex-col space-y-1.5 max-h-48 overflow-y-auto custom-scrollbar pr-1"></div>
+                </div>
             </div>
+
         </section>
 
         <!-- Grafico de IMC e Gordura Visceral -->
