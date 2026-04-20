@@ -681,9 +681,9 @@
 </div>
 <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
     <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Janela 12M:</span>
-    <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-32" id="swapStart" type="date" title="Data Inicial"/>
+    <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40" id="swapStart" type="date" title="Data Inicial"/>
     <span class="text-slate-500 text-xs">até</span>
-    <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-32" id="swapEnd" type="date" title="Data Final"/>
+    <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40" id="swapEnd" type="date" title="Data Final"/>
     <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2 flex items-center gap-2" onclick="fetchSwapHistory()"><span>🔍</span> AUDITAR TROCA</button>
 </div>
 </div>
@@ -696,15 +696,19 @@
                     SUÍTE DE BIOMETRIA SUPREMA
                     <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded border border-indigo-500/30 font-mono">CONTINUOUS_DATA_ENGINE_ACTIVE</span>
 </h2>
+
 </div><div class="gap-6 w-full space-y-8">
 <!-- Gráfico: Gordura Corporal Total -->
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-indigo-500"></span>Gordura Total (%)</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="fatStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('fat')">🔍</button>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="fatChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="fatChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <button onclick="fetchBiometrySingle('fatChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
 </div>
+
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="fatChart"></canvas></div>
 </div>
@@ -712,10 +716,13 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-emerald-500"></span>Massa Muscular (kg)</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="muscleStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('muscle')">🔍</button>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="muscleTotalChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="muscleTotalChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <button onclick="fetchBiometrySingle('muscleTotalChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
 </div>
+
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="muscleTotalChart"></canvas></div>
 </div>
@@ -723,10 +730,13 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-amber-500"></span>Massa Óssea (kg)</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="boneStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('bone')">🔍</button>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="boneChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="boneChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <button onclick="fetchBiometrySingle('boneChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
 </div>
+
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="boneChart"></canvas></div>
 </div>
@@ -734,10 +744,13 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-sky-500"></span>Água Corporal (kg)</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="hydroStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('hydro')">🔍</button>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="hydroChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="hydroChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <button onclick="fetchBiometrySingle('hydroChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
 </div>
+
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="hydroChart"></canvas></div>
 </div>
@@ -745,10 +758,7 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-violet-500"></span>Massa Proteica (%)</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="proteinStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('protein')">🔍</button>
-</div>
+
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="proteinChart"></canvas></div>
 </div>
@@ -756,10 +766,7 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-rose-500"></span>Idade Metabólica</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="metaStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('meta')">🔍</button>
-</div>
+
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="metabolicAgeChart"></canvas></div>
 </div>
@@ -767,10 +774,7 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-cyan-500"></span>WHR (Cintura/Quadril)</h4>
-<div class="flex gap-1">
-<input class="bg-transparent text-[8px] text-slate-400 border-none outline-none" id="whrStart" type="date"/>
-<button class="text-[9px] text-indigo-400" onclick="fetchHistory('whr')">🔍</button>
-</div>
+
 </div>
 <div class="text-[8px] text-slate-500 mb-1 uppercase text-center">Dados Renpho + Gap Filling Inteligente</div>
 <div class="relative w-full h-[400px]"><canvas height="130" id="whrChart"></canvas></div>
