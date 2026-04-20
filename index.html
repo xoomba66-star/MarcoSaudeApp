@@ -429,7 +429,9 @@
                         <button onclick="fetchHistory('bp')" class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-bold px-3 py-1.5 rounded-lg transition-all">🔍 AUDITAR PRESSÃO</button>
                     </div>
                 </div>
-                <canvas id="bpChart" height="120"></canvas>
+                <div class="relative h-[180px] w-full">
+                    <canvas id="bpChart"></canvas>
+                </div>
             </div>
 
             <!-- Gráfico Comparativo: Holter Soberano -->
@@ -446,7 +448,7 @@
                         <button onclick="fetchHistory('hrComp')" class="bg-indigo-600 px-4 py-2 rounded-lg text-[10px] font-bold text-white">🔍 COMPARAR PERÍODO</button>
                     </div>
                 </div>
-                <div class="relative h-[300px]">
+                <div class="relative h-[400px] w-full">
                     <canvas id="hrComparisonChart"></canvas>
                 </div>
                 <div class="flex justify-center gap-6 mt-4 pb-2">
