@@ -679,9 +679,12 @@
                         </h3>
 <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">Muscle Gain vs Fat Loss (Janela 12M Auditável)</p>
 </div>
-<div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
-<input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1" id="swapStart" type="date"/>
-<button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[9px] font-bold px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistory('swap')">🔍 AUDITAR TROCA</button>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Janela 12M:</span>
+    <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-32" id="swapStart" type="date" title="Data Inicial"/>
+    <span class="text-slate-500 text-xs">até</span>
+    <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-32" id="swapEnd" type="date" title="Data Final"/>
+    <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2 flex items-center gap-2" onclick="fetchSwapHistory()"><span>🔍</span> AUDITAR TROCA</button>
 </div>
 </div>
 <div class="h-64">
