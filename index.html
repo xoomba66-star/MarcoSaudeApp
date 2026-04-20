@@ -291,37 +291,168 @@
                 <p class="text-[0.65rem] text-slate-400 mt-3 text-center" id="waterGoalStatus">Calculando meta...</p>
             </div>
             
-            <!-- METABOLIC SWAP EVOLUTION CHART -->
-            <div class="col-span-1 lg:col-span-2 glass-panel p-6 rounded-2xl shadow-xl border border-indigo-500/10">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-                        <div>
-                            <h3 class="text-lg font-bold text-slate-100 flex items-center gap-2">
-                                <span class="w-2 h-6 bg-emerald-500 rounded-full"></span>
-                                Gordura Corporal & Composição
-                            </h3>
-                            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Evolução Longitudinal (12 meses default)</p>
-                        </div>
-                        <!-- Auditoria de Gordura -->
-                        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
-                            <input type="date" id="fatStart" class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1">
-                            <span class="text-slate-600 text-[10px]">→</span>
-                            <input type="date" id="fatEnd" class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1">
-                            <button onclick="fetchFatHistory()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[9px] font-bold px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5">
-                                🔍 <span class="hidden md:inline">AUDITAR</span>
-                            </button>
-                        </div>
+            <!-- METABOLIC SWAP EVOLUTION CHART (RESTAURADO) -->
+            <div class="col-span-1 lg:col-span-3 glass-panel p-6 rounded-2xl shadow-xl border border-indigo-500/10">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                             <span class="w-2 h-6 bg-emerald-500 rounded-full"></span>
+                             Evolução: Troca Metabólica (Muscle vs Fat)
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">Muscle Gain vs Fat Loss (Janela 12M Auditável)</p>
                     </div>
-      <div>
-                        <h3 class="text-xl font-bold text-white">Evolução: Troca Metabólica</h3>
-                        <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">Muscle Gain vs Fat Loss (30d)</p>
-                    </div>
-                    <div class="flex gap-4">
-                        <span class="flex items-center gap-2 text-[10px] text-emerald-400 font-bold uppercase"><div class="w-2 h-2 rounded-full bg-emerald-500"></div> Músculo (kg): <span id="muscleMassText">--</span></span>
-                        <span class="flex items-center gap-2 text-[10px] text-rose-400 font-bold uppercase"><div class="w-2 h-2 rounded-full bg-rose-500"></div> Gordura (%): <span id="fatMassText">--</span></span>
+                    <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
+                        <input type="date" id="swapStart" class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1">
+                        <button onclick="fetchHistory('swap')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[9px] font-bold px-3 py-1.5 rounded-lg transition-all">🔍 AUDITAR TROCA</button>
                     </div>
                 </div>
                 <div class="h-64">
                     <canvas id="metabolicSwapChart"></canvas>
+                </div>
+            </div>
+
+            <!-- SEÇÃO: SUÍTE DE BIOMETRIA SUPREMA (11 GRÁFICOS) -->
+            <div class="col-span-1 lg:col-span-3 mt-8 mb-4">
+                <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                    <span class="w-3 h-8 bg-indigo-500 rounded-full"></span>
+                    SUÍTE DE BIOMETRIA SUPREMA
+                    <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded border border-indigo-500/30 font-mono">CONTINUOUS_DATA_ENGINE_ACTIVE</span>
+                </h2>
+            </div>
+
+            <!-- Grid de Biometria Withings (3 Colunas) -->
+            <div class="col-span-1 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Gráfico: Gordura Corporal Total -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-indigo-500"></span>Gordura Total (%)</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="fatStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('fat')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <canvas id="fatChart" height="150"></canvas>
+                </div>
+
+                <!-- Gráfico: Massa Muscular Total -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-emerald-500"></span>Massa Muscular (kg)</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="muscleStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('muscle')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <canvas id="muscleTotalChart" height="150"></canvas>
+                </div>
+
+                <!-- Gráfico: Massa Óssea -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-amber-500"></span>Massa Óssea (kg)</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="boneStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('bone')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <canvas id="boneChart" height="150"></canvas>
+                </div>
+
+                <!-- Gráfico: Hidratação -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-sky-500"></span>Água Corporal (kg)</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="hydroStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('hydro')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <canvas id="hydroChart" height="150"></canvas>
+                </div>
+
+                <!-- Gráfico: Proteínas -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-violet-500"></span>Massa Proteica (%)</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="proteinStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('protein')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <canvas id="proteinChart" height="150"></canvas>
+                </div>
+
+                <!-- Gráfico: Idade Metabólica / BMR -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-rose-500"></span>Idade Metabólica</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="metaStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('meta')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <canvas id="metabolicAgeChart" height="150"></canvas>
+                </div>
+
+                <!-- Gráfico: WHR (Cintura/Quadril) -->
+                <div class="glass-panel p-4 rounded-xl border border-white/5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-cyan-500"></span>WHR (Cintura/Quadril)</h4>
+                        <div class="flex gap-1">
+                            <input type="date" id="whrStart" class="bg-transparent text-[8px] text-slate-400 border-none outline-none">
+                            <button onclick="fetchHistory('whr')" class="text-[9px] text-indigo-400">🔍</button>
+                        </div>
+                    </div>
+                    <div class="text-[8px] text-slate-500 mb-1 uppercase text-center">Dados Renpho + Gap Filling Inteligente</div>
+                    <canvas id="whrChart" height="130"></canvas>
+                </div>
+            </div>
+
+            <!-- SEÇÃO: VASCULAR & CARDIO SUPREME -->
+            <div class="col-span-1 lg:col-span-3 mt-8 mb-4">
+                <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                    <span class="w-3 h-8 bg-rose-500 rounded-full"></span>
+                    SAÚDE VASCULAR & HOLTER CARDÍACO
+                </h2>
+            </div>
+
+            <!-- Gráfico de Pressão Arterial (Garmin BPM) -->
+            <div class="col-span-1 lg:col-span-3 glass-panel p-6 rounded-2xl border border-white/5 shadow-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Pressão Arterial (Sistólica / Diastólica)</h3>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Fonte: Garmin Index BPM (Holter Morning/Day)</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
+                        <input type="date" id="bpStart" class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1">
+                        <button onclick="fetchHistory('bp')" class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-bold px-3 py-1.5 rounded-lg transition-all">🔍 AUDITAR PRESSÃO</button>
+                    </div>
+                </div>
+                <canvas id="bpChart" height="120"></canvas>
+            </div>
+
+            <!-- Gráfico Comparativo: Holter Soberano -->
+            <div class="col-span-1 lg:col-span-3 glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-slate-900/80 to-indigo-900/20">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                             📈 HOLTER CARDÍACO COMPARATIVO
+                        </h3>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Sincronização: Balança, Relógio, Cinta HRM e BPM</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-slate-950/80 p-2 rounded-xl border border-indigo-500/20">
+                        <input type="date" id="hrCompStart" class="bg-transparent text-[10px] text-slate-300 border-none outline-none pr-4">
+                        <button onclick="fetchHistory('hrComp')" class="bg-indigo-600 px-4 py-2 rounded-lg text-[10px] font-bold text-white">🔍 COMPARAR PERÍODO</button>
+                    </div>
+                </div>
+                <div class="relative h-[300px]">
+                    <canvas id="hrComparisonChart"></canvas>
+                </div>
+                <div class="flex justify-center gap-6 mt-4 pb-2">
+                    <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Balança</span>
+                    <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-sky-400"></span> BPM</span>
+                    <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-rose-400"></span> Cinta (HRM)</span>
+                    <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-indigo-400"></span> Sono (Relógio)</span>
                 </div>
             </div>
 
