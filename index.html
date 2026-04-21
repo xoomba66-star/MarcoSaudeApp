@@ -796,94 +796,98 @@
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="boneChart"></canvas></div>
 </div>
-<!-- Gráfico: Hidratação -->
-<div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
-<div class="flex justify-between items-center mb-4">
-<h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-sky-500"></span>Água Corporal (kg)</h4>
-<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
-    <input type="date" id="hydroChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <span class="text-slate-500 text-[10px]">até</span>
-    <input type="date" id="hydroChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <button onclick="fetchBiometrySingle('hydroChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+<!-- SUÍTE DE BIOMETRIA INDIVIDUALIZADA (Contêiner Mestre) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="biometrySuiteGrid">
+    <!-- Gráfico: Hidratação -->
+    <div class="glass-panel p-4 rounded-xl border border-white/5 w-full">
+        <div class="flex justify-between items-center mb-4">
+            <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-sky-500"></span>Água Corporal (kg)</h4>
+            <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+                <input type="date" id="hydroChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <span class="text-slate-500 text-[10px]">até</span>
+                <input type="date" id="hydroChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <button onclick="fetchBiometrySingle('hydroChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+            </div>
+        </div>
+        <div class="relative w-full h-[300px]"><canvas id="hydroChart"></canvas></div>
+    </div>
+
+    <!-- Gráfico: Proteínas -->
+    <div class="glass-panel p-4 rounded-xl border border-white/5 w-full">
+        <div class="flex justify-between items-center mb-4">
+            <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-violet-500"></span>Massa Proteica (%)</h4>
+            <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+                <input type="date" id="proteinChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <span class="text-slate-500 text-[10px]">até</span>
+                <input type="date" id="proteinChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-40">
+                <button onclick="fetchBiometrySingle('proteinChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+            </div>
+        </div>
+        <div class="relative w-full h-[300px]"><canvas id="proteinChart"></canvas></div>
+    </div>
+    <!-- Gráfico: Idade Metabólica / BMR -->
+    <div class="glass-panel p-4 rounded-xl border border-white/5 w-full">
+        <div class="flex justify-between items-center mb-4">
+            <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-rose-500"></span>Idade Metabólica</h4>
+            <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+                <input type="date" id="metabolicAgeChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <span class="text-slate-500 text-[10px]">até</span>
+                <input type="date" id="metabolicAgeChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <button onclick="fetchBiometrySingle('metabolicAgeChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+            </div>
+        </div>
+        <div class="relative w-full h-[300px]"><canvas id="metabolicAgeChart"></canvas></div>
+    </div>
+    <!-- Gráfico: WHR (Cintura/Quadril) -->
+    <div class="glass-panel p-4 rounded-xl border border-white/5 w-full">
+        <div class="flex justify-between items-center mb-4">
+            <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-cyan-500"></span>WHR (C/Q)</h4>
+            <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+                <input type="date" id="whrChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <span class="text-slate-500 text-[10px]">até</span>
+                <input type="date" id="whrChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+                <button onclick="fetchBiometrySingle('whrChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+            </div>
+        </div>
+    <div class="relative w-full h-[300px]"><canvas id="whrChart"></canvas></div>
+    </div>
+</div> <!-- Final da Suíte de Biometria Grid -->
+
+<!-- Seção: Pressão Arterial (RESTAURADO) -->
+<div class="glass-panel p-6 rounded-2xl border border-white/5 shadow-2xl w-full mb-8">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h3 class="text-lg font-bold text-white">Pressão Arterial (Sistólica / Diastólica)</h3>
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Fonte: Garmin Index BPM (Holter Morning/Day)</p>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
+            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="bpStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-[10px]">até</span>
+            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="bpEnd" type="date" title="Data Final"/>
+            <button class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('bp')">🔍 AUDITAR PRESSÃO</button>
+        </div>
+    </div>
+    <div class="relative h-[180px] w-full">
+        <canvas id="bpChart"></canvas>
+    </div>
 </div>
 
-</div>
-<div class="relative w-full h-[400px]"><canvas height="150" id="hydroChart"></canvas></div>
-</div>
-<!-- Gráfico: Proteínas -->
-<div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
-<div class="flex justify-between items-center mb-4">
-<h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-violet-500"></span>Massa Proteica (%)</h4>
-<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
-    <input type="date" id="proteinChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <span class="text-slate-500 text-[10px]">até</span>
-    <input type="date" id="proteinChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-40">
-    <button onclick="fetchBiometrySingle('proteinChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
-</div>
-
-</div>
-<div class="relative w-full h-[400px]"><canvas height="150" id="proteinChart"></canvas></div>
-</div>
-<!-- Gráfico: Idade Metabólica / BMR -->
-<div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
-<div class="flex justify-between items-center mb-4">
-<h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-rose-500"></span>Idade Metabólica</h4>
-<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
-    <input type="date" id="metabolicAgeChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <span class="text-slate-500 text-[10px]">até</span>
-    <input type="date" id="metabolicAgeChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <button onclick="fetchBiometrySingle('metabolicAgeChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
-</div>
-
-</div>
-<div class="relative w-full h-[400px]"><canvas height="150" id="metabolicAgeChart"></canvas></div>
-</div>
-<!-- Gráfico: WHR (Cintura/Quadril) -->
-<div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
-<div class="flex justify-between items-center mb-4">
-<h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-cyan-500"></span>WHR (Cintura/Quadril)</h4>
-<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
-    <input type="date" id="whrChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <span class="text-slate-500 text-[10px]">até</span>
-    <input type="date" id="whrChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
-    <button onclick="fetchBiometrySingle('whrChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
-</div>
-
-</div>
-<div class="text-[8px] text-slate-500 mb-1 uppercase text-center">Dados Renpho + Gap Filling Inteligente</div>
-<div class="relative w-full h-[400px]"><canvas height="130" id="whrChart"></canvas></div>
-</div>
-</div><div class="glass-panel p-6 rounded-2xl border border-white/5 shadow-2xl w-full mb-8">
-<div class="flex justify-between items-center mb-6">
-<div>
-<h3 class="text-lg font-bold text-white">Pressão Arterial (Sistólica / Diastólica)</h3>
-<p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Fonte: Garmin Index BPM (Holter Morning/Day)</p>
-</div>
-<div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
-    <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="bpStart" type="date" title="Data Inicial"/>
-    <span class="text-slate-500 text-[10px]">até</span>
-    <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="bpEnd" type="date" title="Data Final"/>
-    <button class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('bp')">🔍 AUDITAR PRESSÃO</button>
-</div>
-</div>
-<div class="relative h-[180px] w-full">
-<canvas id="bpChart"></canvas>
-</div>
-</div><div class="glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-slate-900/80 to-indigo-900/20 w-full mb-8">
-<div class="flex justify-between items-center mb-6">
-<div>
-<h3 class="text-lg font-bold text-white flex items-center gap-2">
-                             📈 HOLTER CARDÍACO COMPARATIVO
-                        </h3>
-<p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Sincronização: Balança, Relógio, Cinta HRM e BPM</p>
-</div>
-                <div class="flex items-center gap-2 bg-slate-950/80 p-2 rounded-xl border border-indigo-500/20">
-                    <input class="bg-transparent text-[10px] text-slate-300 border-none outline-none" id="hrCompStart" type="date" title="Data Inicial"/>
-                    <span class="text-slate-500 text-[10px]">até</span>
-                    <input class="bg-transparent text-[10px] text-slate-300 border-none outline-none" id="hrCompEnd" type="date" title="Data Final"/>
-                    <button class="bg-indigo-600 px-4 py-2 rounded-lg text-[10px] font-bold text-white transition-colors hover:bg-indigo-500" onclick="fetchHistoryRange('hrComp')">🔍 COMPARAR PERÍODO</button>
-                </div>
-</div>
+<!-- Seção: Holter Cardíaco -->
+<div class="glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-slate-900/80 to-indigo-900/20 w-full mb-8">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                📈 HOLTER CARDÍACO COMPARATIVO
+            </h3>
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Sincronização: Balança, Relógio, Cinta HRM e BPM</p>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-950/80 p-2 rounded-xl border border-indigo-500/20">
+            <input class="bg-transparent text-[10px] text-slate-300 border-none outline-none" id="hrCompStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-[10px]">até</span>
+            <input class="bg-transparent text-[10px] text-slate-300 border-none outline-none" id="hrCompEnd" type="date" title="Data Final"/>
+            <button class="bg-indigo-600 px-4 py-2 rounded-lg text-[10px] font-bold text-white transition-colors hover:bg-indigo-500" onclick="fetchHistoryRange('hrComp')">🔍 COMPARAR PERÍODO</button>
+        </div>
+    </div>
 <div class="relative h-[400px] w-full">
 <canvas id="hrComparisonChart"></canvas>
 </div>
