@@ -330,15 +330,12 @@
 <!-- Gráfico de Pressão Arterial (Garmin BPM) -->
 <!-- Gráfico Comparativo: Holter Soberano -->
 <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center shadow-lg transition transform hover:scale-105 border border-indigo-500/30">
-<h3 class="text-indigo-400 font-semibold mb-2">Idade Biológica</h3>
-<div class="flex items-baseline space-x-2">
-<p class="text-4xl font-black text-white" id="biologicalAgeContainer">--</p>
-<p class="text-sm text-slate-500">anos</p>
+<h3 class="text-indigo-400 font-semibold mb-2 tracking-widest text-[10px] uppercase">Trindade de Idades Bio-Clínicas</h3>
+<div id="ageTrinityDetails">
+    <!-- Injetado via app.js: Vascular, Metabólica e Condicionamento -->
+    <div class="text-slate-500 italic text-[10px] animate-pulse">Sincronizando idades...</div>
 </div>
-<div class="mt-2 px-3 py-1 bg-white/5 rounded-full border border-white/10">
-<p class="text-[0.65rem] text-slate-400 uppercase tracking-widest font-bold">PhenoAge: <span id="bioAgeDelta">--</span></p>
-</div>
-<p class="text-[0.55rem] text-slate-500 mt-2 uppercase">Cronológica: <span id="chronologicalAgeContainer">--</span></p>
+<p class="text-[0.55rem] text-slate-500 mt-4 uppercase">Base: Withings Vascular & Garmin Fitness</p>
 </div>
 <!-- NOVO: Readiness Score Card -->
 <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center shadow-lg transition transform hover:scale-105 border-l-4 border-l-blue-400" id="readinessCard">
