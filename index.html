@@ -801,20 +801,29 @@
                         </h3>
 <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Sincronização: Balança, Relógio, Cinta HRM e BPM</p>
 </div>
-<div class="flex items-center gap-2 bg-slate-950/80 p-2 rounded-xl border border-indigo-500/20">
-<input class="bg-transparent text-[10px] text-slate-300 border-none outline-none pr-4" id="hrCompStart" type="date"/>
-<button class="bg-indigo-600 px-4 py-2 rounded-lg text-[10px] font-bold text-white" onclick="fetchHistory('hrComp')">🔍 COMPARAR PERÍODO</button>
-</div>
+                <div class="flex items-center gap-2 bg-slate-950/80 p-2 rounded-xl border border-indigo-500/20">
+                    <input class="bg-transparent text-[10px] text-slate-300 border-none outline-none" id="hrCompStart" type="date" title="Data Inicial"/>
+                    <span class="text-slate-500 text-[10px]">até</span>
+                    <input class="bg-transparent text-[10px] text-slate-300 border-none outline-none" id="hrCompEnd" type="date" title="Data Final"/>
+                    <button class="bg-indigo-600 px-4 py-2 rounded-lg text-[10px] font-bold text-white transition-colors hover:bg-indigo-500" onclick="fetchHistoryRange('hrComp')">🔍 COMPARAR PERÍODO</button>
+                </div>
 </div>
 <div class="relative h-[400px] w-full">
 <canvas id="hrComparisonChart"></canvas>
 </div>
-<div class="flex justify-center gap-6 mt-4 pb-2">
-<span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Balança</span>
-<span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-sky-400"></span> BPM</span>
-<span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-rose-400"></span> Cinta (HRM)</span>
-<span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-indigo-400"></span> Sono (Relógio)</span>
-</div>
+            <div class="flex justify-center gap-6 mt-4 pb-2">
+                <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Balança</span>
+                <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-sky-400"></span> BPM</span>
+                <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-rose-400"></span> Cinta (HRM)</span>
+                <span class="flex items-center gap-2 text-[9px] text-slate-400"><span class="w-2 h-2 rounded-full bg-indigo-400"></span> sono (Huawei/Relógio)</span>
+            </div>
+            <!-- NOTA DE SOBERANIA E INTEGRIDADE -->
+            <div class="mt-4 p-4 bg-slate-950/40 border-l-2 border-indigo-500/30 rounded-r-xl">
+                <p class="text-[10px] text-slate-500 leading-relaxed italic">
+                    <strong class="text-indigo-400/80 uppercase tracking-widest text-[9px] block mb-1">Nota de Soberania Cardiovascular:</strong>
+                    A formação deste gráfico segue a hierarquia de precisão clínica: 1. Garmin Index BPM (Padrão Ouro); 2. Balança Withings (Referência de Rotina); 3. Cinta HRM 600 (Alta Intensidade); 4. Relógios Garmin/Huawei (Tendência e Sono). Lacunas na linha do tempo refletem períodos sem o uso de dispositivos vestíveis, garantindo que nenhum dado sintético seja gerado fora do monitoramento real.
+                </p>
+            </div>
 </div><section class="glass-panel p-6 rounded-2xl shadow-lg border-l-4 border-rose-500 hidden mb-8" id="cardioAuditPanel">
 <h2 class="text-2xl font-semibold mb-4 text-rose-400 flex items-center">
 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
@@ -824,31 +833,6 @@
 <p class="text-slate-300 text-sm leading-relaxed" id="cardioAuditText">Analisando janelas de disparo de fibrilação...</p>
 </div>
 </section><section class="glass-panel p-6 rounded-2xl shadow-xl border-t-2 border-indigo-500/50 mb-8" id="riskPredictionPanel">
-<div class="flex justify-between items-center mb-6">
-<h2 class="text-2xl font-bold text-indigo-300">Projeção de Risco Rítmico (Próximas 48h)</h2>
-<div class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-slate-800 text-slate-400" id="riskTrendBadge">Tendência Estável</div>
-</div>
-<div class="gap-6 w-full space-y-8">
-<!-- Gauge -->
-<div class="flex flex-col items-center justify-center p-4">
-<div class="relative w-40 h-40 flex items-center justify-center">
-<svg class="w-full h-full transform -rotate-90">
-<circle class="text-slate-800" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
-<circle class="text-indigo-500 transition-all duration-1000" cx="80" cy="80" fill="transparent" id="riskCircle" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="440" stroke-width="12"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-4xl font-black text-white" id="riskPercentText">0%</span>
-<span class="text-[10px] uppercase font-bold text-slate-500">Risco Estimado</span>
-</div>
-</div>
-</div>
-<!-- Recommendations -->
-<div class="md:col-span-2 space-y-4">
-<h4 class="text-xs font-black text-slate-500 uppercase tracking-widest">Ações de Mitigação Recomendadas</h4>
-<div class="space-y-2" id="riskActionsContainer">
-<!-- Injetado via JS -->
-</div>
-<p class="text-sm text-slate-400 italic mt-4 border-l-2 border-slate-700 pl-4" id="riskSummaryText"></p>
 </div>
 </div>
 </section><section class="glass-panel p-8 rounded-2xl shadow-xl mb-8">
