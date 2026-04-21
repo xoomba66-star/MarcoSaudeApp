@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css?v=1.1" rel="stylesheet"/>
 <script src="data.js?v=1.1"></script>
-<script defer="" src="app.js?v=2.0"></script>
+<script defer="" src="app.js?v=3.0"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -814,6 +814,12 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-violet-500"></span>Massa Proteica (%)</h4>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="proteinChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="proteinChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-40">
+    <button onclick="fetchBiometrySingle('proteinChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+</div>
 
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="proteinChart"></canvas></div>
@@ -822,6 +828,12 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-rose-500"></span>Idade Metabólica</h4>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="metabolicAgeChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="metabolicAgeChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <button onclick="fetchBiometrySingle('metabolicAgeChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+</div>
 
 </div>
 <div class="relative w-full h-[400px]"><canvas height="150" id="metabolicAgeChart"></canvas></div>
@@ -830,6 +842,12 @@
 <div class="glass-panel p-4 rounded-xl border border-white/5 w-full mb-8">
 <div class="flex justify-between items-center mb-4">
 <h4 class="text-xs font-bold text-slate-300 flex items-center gap-2"><span class="w-1 h-3 bg-cyan-500"></span>WHR (Cintura/Quadril)</h4>
+<div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-1.5 rounded-lg border border-white/5 mt-2 mb-2 w-fit">
+    <input type="date" id="whrChartStart" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input type="date" id="whrChartEnd" class="bg-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded outline-none border border-slate-700 w-36">
+    <button onclick="fetchBiometrySingle('whrChart')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors">🔍</button>
+</div>
 
 </div>
 <div class="text-[8px] text-slate-500 mb-1 uppercase text-center">Dados Renpho + Gap Filling Inteligente</div>
