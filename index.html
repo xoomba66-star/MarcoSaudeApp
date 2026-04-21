@@ -860,8 +860,10 @@
 <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Fonte: Garmin Index BPM (Holter Morning/Day)</p>
 </div>
 <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
-<input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1" id="bpStart" type="date"/>
-<button class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-bold px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistory('bp')">🔍 AUDITAR PRESSÃO</button>
+    <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="bpStart" type="date" title="Data Inicial"/>
+    <span class="text-slate-500 text-[10px]">até</span>
+    <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="bpEnd" type="date" title="Data Final"/>
+    <button class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('bp')">🔍 AUDITAR PRESSÃO</button>
 </div>
 </div>
 <div class="relative h-[180px] w-full">
@@ -924,31 +926,44 @@
 <div class="relative h-64 w-full">
 <canvas id="pesoChart"></canvas>
 </div>
-</section><section class="glass-panel p-8 rounded-2xl shadow-xl mb-8">
-<div class="flex justify-between items-center mb-6">
-<h2 class="text-2xl font-bold text-slate-200">Composição Corporal &amp; Gordura (TOTAL)</h2>
-<div class="flex bg-slate-800/50 p-1 rounded-xl border border-white/5">
-<button class="px-3 py-1 text-[10px] font-bold text-slate-400 hover:text-white transition-colors" onclick="changeTimeRange('fatChart', 6)">6M</button>
-<button class="px-3 py-1 text-[10px] font-bold text-indigo-400 bg-indigo-500/10 rounded-lg" onclick="changeTimeRange('fatChart', 12)">1Y</button>
-<button class="px-3 py-1 text-[10px] font-bold text-slate-400 hover:text-white transition-colors" onclick="changeTimeRange('fatChart', 0)">TUDO</button>
-</div>
-</div>
-<div class="relative h-64 w-full">
-<canvas id="fatChart"></canvas>
-</div>
-</section><section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-fuchsia-500/50 mt-6 mb-6 mb-8">
-<div class="flex justify-between items-center mb-6">
-<h2 class="text-2xl font-bold text-fuchsia-300">Evolução de Gordura e Músculos Segmentados (Withings)</h2>
-<div class="flex bg-slate-800/50 p-1 rounded-xl border border-white/5">
-<button class="px-3 py-1 text-[10px] font-bold text-slate-400 hover:text-white transition-colors" onclick="changeTimeRange('withingsSegChart', 6)">6M</button>
-<button class="px-3 py-1 text-[10px] font-bold text-indigo-400 bg-indigo-500/10 rounded-lg" onclick="changeTimeRange('withingsSegChart', 12)">1Y</button>
-<button class="px-3 py-1 text-[10px] font-bold text-slate-400 hover:text-white transition-colors" onclick="changeTimeRange('withingsSegChart', 0)">TUDO</button>
-</div>
-</div>
-<div class="relative h-64 w-full">
-<canvas id="withingsSegChart"></canvas>
-</div>
-</section><section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-teal-500/30 mb-8">
+</section><!-- SEÇÃO: GORDURA SEGMENTADA -->
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-rose-500/50 mt-6 mb-8">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h2 class="text-2xl font-bold text-rose-300">Gordura Segmentada (Withings)</h2>
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Distribuição de gordura por membros e tronco</p>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
+            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsSegStart" type="date" title="Início"/>
+            <span class="text-slate-500 text-[10px]">até</span>
+            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsSegEnd" type="date" title="Fim"/>
+            <button class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('withingsSeg')">🔍 AUDITAR GORDURA</button>
+        </div>
+    </div>
+    <div class="relative h-72 w-full">
+        <canvas id="withingsFatSegChart"></canvas>
+    </div>
+</section>
+
+<!-- SEÇÃO: MÚSCULO SEGMENTADO -->
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-emerald-500/50 mt-6 mb-8">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h2 class="text-2xl font-bold text-emerald-300">Massa Muscular Segmentada (Withings)</h2>
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Simetria e densidade muscular localizada</p>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
+            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsMuscleStart" type="date" title="Início"/>
+            <span class="text-slate-500 text-[10px]">até</span>
+            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsMuscleEnd" type="date" title="Fim"/>
+            <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('withingsMuscle')">🔍 AUDITAR MÚSCULO</button>
+        </div>
+    </div>
+    <div class="relative h-72 w-full">
+        <canvas id="withingsMuscleSegChart"></canvas>
+    </div>
+</section>
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-teal-500/30 mb-8">
 <h2 class="text-2xl font-bold mb-6 text-teal-300">Evolução: Gordura Subcutânea</h2>
 <div class="relative h-64 w-full">
 <canvas id="subQChart"></canvas>
@@ -1008,12 +1023,7 @@
 <canvas id="spo2Chart"></canvas>
 </div>
 </div>
-<div>
-<h2 class="text-xl font-bold mb-4 text-slate-200 text-center">Dinâmica de Pressão Arterial (PA)</h2>
-<div class="relative h-64 w-full">
-<canvas id="bpChart"></canvas>
-</div>
-</div>
+
 </section><section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
 <div>
 <h2 class="text-xl font-bold mb-4 text-slate-200 text-center">Saúde Nervosa / VFC (HRV)</h2>
