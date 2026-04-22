@@ -536,19 +536,24 @@
 <div class="tab-content hidden" id="tab-performance">
 <!-- Dashboard de Evolução Muscular Segmentada (Withings Body Scan Precision) -->
 <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-<div class="glass-panel p-8 rounded-3xl lg:col-span-2 border-t-4 border-emerald-500/50 glow-emerald">
-<div class="flex justify-between items-center mb-6">
-<div>
-<h2 class="text-3xl font-black text-white tracking-tight">Evolução Muscular Segmentada</h2>
-<p class="text-slate-400 text-sm">Distribuição de massa magra por quadrante corporal (kg)</p>
+<div class="glass-panel p-8 rounded-3xl lg:col-span-2 border-t-4 border-emerald-500/50 glow-emerald mb-6">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-black text-white tracking-tight">Evolução Muscular Segmentada</h2>
+        <div class="bg-emerald-500/10 px-4 py-2 rounded-2xl border border-emerald-500/20">
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Withings 6-Lead</span>
+        </div>
+    </div>
+    <div class="relative h-64 w-full"><canvas id="muscleSegmentedChart"></canvas></div>
 </div>
-<div class="bg-emerald-500/10 px-4 py-2 rounded-2xl border border-emerald-500/20">
-<span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Withings 6-Lead</span>
-</div>
-</div>
-<div class="relative h-80 w-full mb-4">
-<canvas id="muscleSegmentedChart"></canvas>
-</div>
+
+<div class="glass-panel p-8 rounded-3xl lg:col-span-2 border-t-4 border-rose-500/50 glow-rose">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-black text-white tracking-tight">Gordura Segmentada</h2>
+        <div class="bg-rose-500/10 px-4 py-2 rounded-2xl border border-rose-500/20">
+            <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Análise de Redução</span>
+        </div>
+    </div>
+    <div class="relative h-64 w-full"><canvas id="fatSegmentedChart"></canvas></div>
 </div>
 <div class="glass-panel p-8 rounded-3xl border-t-4 border-sky-500/50 glow-blue flex flex-col justify-between">
 <div>
@@ -928,41 +933,6 @@
 <canvas id="pesoChart"></canvas>
 </div>
 </section><!-- SEÇÃO: GORDURA SEGMENTADA -->
-<section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-rose-500/50 mt-6 mb-8">
-    <div class="flex justify-between items-center mb-6">
-        <div>
-            <h2 class="text-2xl font-bold text-rose-300">Gordura Segmentada (Withings)</h2>
-            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Distribuição de gordura por membros e tronco</p>
-        </div>
-        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
-            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsSegStart" type="date" title="Início"/>
-            <span class="text-slate-500 text-[10px]">até</span>
-            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsSegEnd" type="date" title="Fim"/>
-            <button class="bg-rose-600 hover:bg-rose-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('withingsSeg')">🔍 AUDITAR GORDURA</button>
-        </div>
-    </div>
-    <div class="relative h-72 w-full">
-        <canvas id="withingsFatSegChart"></canvas>
-    </div>
-</section>
-
-<!-- SEÇÃO: MÚSCULO SEGMENTADO -->
-<section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-emerald-500/50 mt-6 mb-8">
-    <div class="flex justify-between items-center mb-6">
-        <div>
-            <h2 class="text-2xl font-bold text-emerald-300">Massa Muscular Segmentada (Withings)</h2>
-            <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Simetria e densidade muscular localizada</p>
-        </div>
-        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
-            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsMuscleStart" type="date" title="Início"/>
-            <span class="text-slate-500 text-[10px]">até</span>
-            <input class="bg-transparent text-[10px] text-slate-300 outline-none border-none p-1 w-28" id="withingsMuscleEnd" type="date" title="Fim"/>
-            <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[9px] font-black px-3 py-1.5 rounded-lg transition-all" onclick="fetchHistoryRange('withingsMuscle')">🔍 AUDITAR MÚSCULO</button>
-        </div>
-    </div>
-    <div class="relative h-72 w-full">
-        <canvas id="withingsMuscleSegChart"></canvas>
-    </div>
 </section>
 <section class="glass-panel p-8 rounded-2xl shadow-xl border-t-2 border-teal-500/30 mb-8">
 <h2 class="text-2xl font-bold mb-6 text-teal-300">Evolução: Gordura Subcutânea</h2>
@@ -1056,10 +1026,11 @@
 <p class="text-slate-400 mt-2">Auditoria cronológica e repositório de sinais biológicos.</p>
 </div>
 </div>
-<div class="grid grid-cols-1 gap-6" id="historyFeed">
+            <div class="grid grid-cols-1 gap-6" id="historyFeed">
 <p class="text-slate-500 animate-pulse">Consultando arquivo médico...</p>
 </div>
 </div>
+</main>
 </main>
 <!-- SECTION: RELATÓRIOS & BI -->
 <main class="p-8 space-y-8 tab-content hidden" id="tab-reports">
