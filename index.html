@@ -15,8 +15,8 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css?v=1.1" rel="stylesheet"/>
-<script src="data.js?v=28.0"></script>
-<script defer="" src="app.js?v=28.0"></script>
+<script src="data.js?v=29.0"></script>
+<script defer="" src="app.js?v=29.0"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -558,6 +558,15 @@
 <div class="glass-panel p-8 rounded-3xl lg:col-span-2 border-t-4 border-rose-500/50 glow-rose">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-black text-white tracking-tight">Gordura Segmentada</h2>
+        <div class="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-500 font-bold uppercase ml-2">Audit de Datas:</span>
+            <input class="bg-transparent text-xs text-indigo-300 border-none focus:ring-0 w-28" id="fatSegStart" type="date" title="Início"/>
+            <span class="text-slate-600 text-xs">→</span>
+            <input class="bg-transparent text-xs text-indigo-300 border-none focus:ring-0 w-28" id="fatSegEnd" type="date" title="Fim"/>
+            <button class="ml-2 px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white text-[10px] font-black rounded-lg transition-all shadow-lg shadow-rose-500/20 uppercase" onclick="fetchFatSegHistory()">
+                🔍 Audit 12M
+            </button>
+        </div>
         <div class="bg-rose-500/10 px-4 py-2 rounded-2xl border border-rose-500/20">
             <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Análise de Redução</span>
         </div>
