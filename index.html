@@ -15,8 +15,8 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css?v=1.1" rel="stylesheet"/>
-<script src="data.js?v=41.0"></script>
-<script defer src="app.js?v=46.0"></script>
+<script defer src="data.js?v=47.0"></script>
+<script defer src="app.js?v=48.0"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -451,7 +451,7 @@
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
         ADICIONAR ALIMENTO (MANUAL)
     </button>
-    <div class="grid grid-cols-4 gap-2 w-full">
+    <div class="grid grid-cols-5 gap-2 w-full">
         <button class="py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl shadow border border-white/5 flex items-center justify-center transition-all group" onclick="window.location.href='scanner.html'" title="Ler QR Code da Tabela Nutricional">
             <svg class="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
         </button>
@@ -463,6 +463,12 @@
         </button>
         <button class="py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl shadow border border-white/5 flex items-center justify-center transition-all group relative overflow-hidden" onclick="startFoodVoiceRecognition()" title="Ditar Alimento (Voz para Texto)">
             <svg class="w-5 h-5 text-rose-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+        </button>
+        <button class="py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl shadow border border-white/5 flex items-center justify-center transition-all group relative overflow-hidden" id="btnSyncMFP" onclick="syncMyFitnessPal()" title="Sincronizar Diário MyFitnessPal">
+            <div class="absolute inset-0 bg-blue-500/20 flex items-center justify-center hidden" id="mfp-loading">
+                <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <svg class="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
         </button>
     </div>
 </div>
