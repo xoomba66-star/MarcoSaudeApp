@@ -742,8 +742,8 @@
 </section>
 </div>
 <div class="tab-content" id="tab-bioquimica">
-<!-- Historico CareClinic -->
-<section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-2">
+<!-- Historico CareClinic (OCULTADO TEMPORARIAMENTE A PEDIDO DO USUÁRIO) -->
+<section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-2 hidden" id="oldCareClinicSection">
 <h2 class="text-2xl font-bold mb-6 text-slate-200">Registro de Sintomas Clínicos (CareClinic)</h2>
 <div class="flex flex-wrap gap-3 overflow-y-auto max-h-64 pr-2" id="sintomasContainer">
 <!-- Badges populados via JS -->
@@ -1130,6 +1130,45 @@
 <div class="relative h-64 w-full">
 <canvas id="imcVisceralChart"></canvas>
 </div>
+</section>
+
+<!-- SEÇÃO CARECLINIC CORRELATOR (Radar Temporal e IA) -->
+<section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-3 border-t-4 border-amber-500 mb-8" id="careclinicCorrelatorSection">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <div>
+            <h2 class="text-2xl font-bold mb-2 text-slate-200 flex items-center gap-3">
+                <span class="w-3 h-8 bg-amber-500 rounded-full"></span>
+                Radar Temporal Clínico (CareClinic)
+            </h2>
+            <p class="text-slate-400 text-sm">Correlação temporal entre Sintomas, Medicamentos e Evolução Pessoal.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2">Janela:</span>
+            <select id="careclinicDays" class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700">
+                <option value="30">Últimos 30 Dias</option>
+                <option value="60" selected>Últimos 60 Dias</option>
+                <option value="90">Últimos 90 Dias</option>
+            </select>
+            <button class="bg-amber-600 hover:bg-amber-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2" onclick="fetchCareClinicRadar()">🔄 ATUALIZAR RADAR</button>
+            <button class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2 flex items-center gap-1 shadow-[0_0_10px_rgba(168,85,247,0.4)]" onclick="fetchCareClinicHolistic()"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> IA CORRELATOR</button>
+        </div>
+    </div>
+    
+    <!-- Radar Chart -->
+    <div class="relative h-80 w-full mb-8 bg-slate-900/30 rounded-xl p-2 border border-slate-800">
+        <canvas id="careclinicRadarChart"></canvas>
+    </div>
+    
+    <!-- Loading State para a IA -->
+    <div id="ccAiLoading" class="hidden flex-col items-center justify-center p-8 bg-slate-800/40 rounded-xl border border-purple-500/20 mb-6">
+        <div class="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-purple-400 font-bold animate-pulse text-sm">A Inteligência Artificial está analisando as correlações sistêmicas nos 11 domínios...</p>
+    </div>
+    
+    <!-- 11 Insights Grid (Oculto inicialmente) -->
+    <div id="ccHolisticGrid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-700/50">
+        <!-- Generativo via JS -->
+    </div>
 </section><section class="glass-panel p-8 rounded-2xl shadow-xl border border-transparent transition-all duration-500 mb-8" id="anatomyChartSection">
 <h2 class="text-2xl font-bold mb-6 text-slate-200">Medidas Circunferenciais (Fita Métrica Renpho / Manual)</h2>
 <div class="relative h-64 w-full">
@@ -1296,5 +1335,7 @@
 </div>
 </div>
 <!-- Close ml-20 wrapper -->
+<!-- CareClinic Correlator Motor -->
+<script src="careclinic_radar.js"></script>
 </body>
 </html>
