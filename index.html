@@ -807,7 +807,25 @@
 <svg class="w-8 h-8 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                 Marcadores Moleculares
             </h2>
-<p class="text-slate-400 text-sm mb-8 border-b border-white/5 pb-4">Histórico clínico de análises de sangue (Colesterol, Glicose, PSA, Hormônios, etc).</p>
+<p class="text-slate-400 text-sm mb-4 border-b border-white/5 pb-4">Histórico clínico de análises de sangue (Colesterol, Glicose, PSA, Hormônios, etc).</p>
+
+<!-- Lacunas Diagnósticas (Balões de Alerta) -->
+<div id="biomarkerGapsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"></div>
+
+<!-- Filtros de Tempo Global para Marcadores -->
+<div class="flex flex-wrap items-center gap-4 mb-6 bg-slate-900/40 p-4 rounded-xl border border-indigo-500/30">
+    <div class="text-indigo-400 font-bold text-sm uppercase tracking-wider mr-2">⏱️ Escala Temporal:</div>
+    <div class="flex items-center gap-2">
+        <label class="text-xs text-slate-400">Início:</label>
+        <input type="date" id="examChartStart" class="bg-slate-800 border border-white/10 p-1.5 rounded text-sm text-slate-300 focus:outline-none focus:border-indigo-500">
+    </div>
+    <div class="flex items-center gap-2">
+        <label class="text-xs text-slate-400">Fim:</label>
+        <input type="date" id="examChartEnd" class="bg-slate-800 border border-white/10 p-1.5 rounded text-sm text-slate-300 focus:outline-none focus:border-indigo-500">
+    </div>
+    <button onclick="renderMolecularMarkers()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-4 py-2 rounded transition-colors ml-auto">Atualizar Gráficos</button>
+</div>
+
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="dynamicExamsContainer">
 <!-- Populando via JS com molecular_markers -->
 </div>
