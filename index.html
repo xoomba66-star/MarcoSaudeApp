@@ -1245,7 +1245,7 @@
 </div>
 <div>
 <h2 class="text-xl font-bold mb-4 text-slate-200 text-center">Idade Vascular vs. Cronológica</h2>
-<div class="relative h-64 w-full flex flex-col items-center justify-center">
+<div class="relative w-full flex flex-col items-center justify-start space-y-6">
     <!-- Texto Simplificado -->
     <div class="text-center mb-2">
         <span class="block text-slate-400 text-sm mb-1">Detecção PWV (Withings):</span>
@@ -1253,8 +1253,22 @@
         <span class="block text-emerald-400 mt-1 font-bold text-xs" id="ecgDisplay">Último ECG: Aguardando...</span>
     </div>
     <!-- Novo Gráfico de Comparação -->
-    <div class="w-full h-24 mt-2 px-4">
+    <div class="relative w-full h-24 px-4">
         <canvas id="vascularComparisonChart"></canvas>
+    </div>
+    <!-- Gráfico Temporal de Evolução do PWV -->
+    <div class="relative w-full h-56 px-2 border-t border-slate-700/50 pt-4 mt-4 flex flex-col items-center">
+        <span class="block text-[10px] text-slate-500 font-bold uppercase mb-2 text-center">Evolução do Sinal PWV (m/s)</span>
+        <div class="flex flex-wrap items-center justify-center gap-1 bg-slate-900/50 p-2 rounded-xl border border-white/5 w-full mb-2">
+            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-1">Datas:</span>
+            <input class="bg-slate-800 text-slate-200 text-[10px] px-1 py-1 rounded outline-none border border-slate-700 w-28 cursor-pointer" id="pwvStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-[10px]">até</span>
+            <input class="bg-slate-800 text-slate-200 text-[10px] px-1 py-1 rounded outline-none border border-slate-700 w-28 cursor-pointer" id="pwvEnd" type="date" title="Data Final"/>
+            <button class="bg-amber-600 hover:bg-amber-500 text-white text-[10px] uppercase font-bold px-2 py-1 rounded-lg transition-all ml-1" onclick="filterPwv()">🔍</button>
+        </div>
+        <div class="relative h-32 w-full">
+            <canvas id="pwvChart"></canvas>
+        </div>
     </div>
 </div>
 </div>
