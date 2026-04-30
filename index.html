@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css?v=4" rel="stylesheet"/>
 <script src="data.js?v=1777505141"></script>
-<script defer="" src="app.js?v=1777502507"></script>
+<script defer="" src="app.js?v=1777509957"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -138,7 +138,7 @@
 <input accept="image/*" capture="environment" class="hidden" id="food-camera-input" onchange="processFoodPhoto(event)" type="file"/>
 </button>
 </div>
-<form class="space-y-4" id="food-form">
+<form class="space-y-4" id="food-form" onsubmit="return window.submitFoodForm ? window.submitFoodForm(event) : false;">
 <div>
 <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Nome do Alimento / Marca</label>
 <div class="flex gap-2">
