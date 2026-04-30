@@ -15,8 +15,8 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css?v=4" rel="stylesheet"/>
-<script src="data.js?v=1777505141"></script>
-<script defer="" src="app.js?v=1777509957"></script>
+<script src="data_v4.js?v=1777505141"></script>
+<script defer="" src="app_v4.js?v=1777507950"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -138,7 +138,7 @@
 <input accept="image/*" capture="environment" class="hidden" id="food-camera-input" onchange="processFoodPhoto(event)" type="file"/>
 </button>
 </div>
-<form class="space-y-4" id="food-form" onsubmit="return window.submitFoodForm ? window.submitFoodForm(event) : false;">
+<form class="space-y-4" id="food-form">
 <div>
 <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Nome do Alimento / Marca</label>
 <div class="flex gap-2">
@@ -693,28 +693,6 @@
 <p class="text-slate-400">Aguardando geração do Conselho de Medicina Genômica...</p>
 </div>
 </section>
-
-<!-- NOVO: Tabela de Cronofarmacologia ABNT (Adicionado pelo Agente) -->
-<section class="glass-panel p-8 rounded-2xl shadow-xl mt-8">
-<h2 class="text-2xl font-bold mb-2 text-indigo-300">🧪 Auditoria de Cronofarmacologia IA</h2>
-<p class="text-sm text-slate-400 mb-6">Diretrizes cruzadas: EUA (Endocrine Society, ISSN), Europa (ESPEN, ESC) e Brasil (SBD, SBMEE).</p>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="text-slate-500 text-xs uppercase border-b border-slate-700">
-<th class="pb-4 w-1/4">Ativo Farmacológico</th>
-<th class="pb-4">Status / Ciclo</th>
-<th class="pb-4 w-1/2">Justificativa & Citações (ABNT)</th>
-</tr>
-</thead>
-<tbody id="abntSupplementTableBody">
-<tr><td colspan="3" class="py-4 text-center text-slate-400">Carregando auditoria ABNT...</td></tr>
-</tbody>
-</table>
-</div>
-</section>
-<!-- FIM NOVO -->
-
 <!-- Tabela de Suplementos -->
 <section class="glass-panel p-8 rounded-2xl shadow-xl mt-8">
 <h2 class="text-2xl font-bold mb-6 text-slate-200">Protocolos de Suplementação Ativos</h2>
