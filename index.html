@@ -15,8 +15,8 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
 <link href="style.css?v=4" rel="stylesheet"/>
-<script src="data.js?v=1777505141"></script>
-<script defer="" src="app.js?v=1777509957"></script>
+<script src="data.js?v=20260501"></script>
+<script defer="" src="app.js?v=202605012"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -568,6 +568,46 @@
           </div>
       </div>
   </section>
+
+      
+      <!-- ESPORTES ESPECIFICOS GARMIN -->
+      <div class="mt-8 mb-8">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+              <h3 class="text-xl font-bold text-white flex items-center mb-4 md:mb-0">
+                  <svg class="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  Telemetria Específica de Esportes
+              </h3>
+              <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5 shadow-lg">
+                  <span class="text-[10px] text-slate-500 font-bold uppercase ml-2">Filtro:</span>
+                  <input class="bg-slate-800/50 text-xs text-indigo-300 border-none rounded focus:ring-1 focus:ring-indigo-500 w-32 px-2 py-1" id="sportFilterStart" type="date" title="Início"/>
+                  <span class="text-slate-600 text-xs">→</span>
+                  <input class="bg-slate-800/50 text-xs text-indigo-300 border-none rounded focus:ring-1 focus:ring-indigo-500 w-32 px-2 py-1" id="sportFilterEnd" type="date" title="Fim"/>
+                  <button onclick="renderSpecificSportsCharts()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-4 py-1.5 rounded-lg font-bold transition shadow-md">Aplicar Filtro</button>
+              </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-xl transition hover:scale-105">
+                  <h4 class="text-slate-300 font-semibold mb-2">🏃‍♂️ Corrida / Esteira</h4>
+                  <div class="relative h-48 w-full"><canvas id="esporteCorridaChart"></canvas></div>
+              </div>
+              <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-xl transition hover:scale-105">
+                  <h4 class="text-slate-300 font-semibold mb-2">🚶‍♂️ Caminhada</h4>
+                  <div class="relative h-48 w-full"><canvas id="esporteCaminhadaChart"></canvas></div>
+              </div>
+              <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-xl transition hover:scale-105">
+                  <h4 class="text-slate-300 font-semibold mb-2">🚴‍♂️ Ciclismo</h4>
+                  <div class="relative h-48 w-full"><canvas id="esporteCiclismoChart"></canvas></div>
+              </div>
+              <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-xl transition hover:scale-105">
+                  <h4 class="text-slate-300 font-semibold mb-2">🏊‍♂️ Natação</h4>
+                  <div class="relative h-48 w-full"><canvas id="esporteNatacaoChart"></canvas></div>
+              </div>
+              <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-xl transition hover:scale-105">
+                  <h4 class="text-slate-300 font-semibold mb-2">🥊 Cardio / Luta / Corda</h4>
+                  <div class="relative h-48 w-full"><canvas id="esporteCordaChart"></canvas></div>
+              </div>
+          </div>
+      </div>
 
 <!-- Dashboard de Evolução Muscular Segmentada (Withings Body Scan Precision) -->
 <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
