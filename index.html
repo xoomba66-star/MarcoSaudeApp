@@ -1150,7 +1150,71 @@
 <div class="relative h-64 w-full">
 <canvas id="anatomyChart"></canvas>
 </div>
-</section><section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-2 border-l-4 border-rose-500 mb-8">
+</section>
+
+<!-- INÍCIO SENSORES SINTÉTICOS (BODY SCAN 2) -->
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-l-4 border-amber-500 mb-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <h2 class="text-2xl font-bold text-slate-200">Sensor Sintético: Área de Gordura Visceral (VFA)</h2>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Audit de Datas:</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="vfaStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-xs">até</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="vfaEnd" type="date" title="Data Final"/>
+            <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2" onclick="filterVFA()">🔍 AUDITAR VFA</button>
+        </div>
+    </div>
+    <div class="relative h-64 w-full">
+        <canvas id="vfaChart"></canvas>
+    </div>
+    <div class="mt-4 p-4 bg-slate-800/30 rounded-xl border border-amber-500/10 text-xs text-slate-400 italic leading-relaxed">
+        <strong>Fundamentação Científica:</strong> A Área de Gordura Visceral (VFA - Visceral Fat Area) é o padrão-ouro clínico para avaliação de risco cardiometabólico independente do IMC total, normalmente auferido via tomografia. O modelo sintético extrapola esta área (cm²) cruzando o índice visceral basal com a circunferência abdominal.
+        <br/><br/><span class="text-[10px]">Referência ABNT: DESPRÉS, J. P. et al. Abdominal obesity and the metabolic syndrome: contribution to global cardiometabolic risk. <em>Arteriosclerosis, Thrombosis, and Vascular Biology</em>, v. 28, n. 6, p. 1039-1049, 2008.</span>
+    </div>
+</section>
+
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-l-4 border-cyan-500 mb-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <h2 class="text-2xl font-bold text-slate-200">Sensor Sintético: Taxa de Edema Celular (ECW/TBW)</h2>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Audit de Datas:</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="edemaStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-xs">até</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="edemaEnd" type="date" title="Data Final"/>
+            <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2" onclick="filterEdema()">🔍 AUDITAR EDEMA</button>
+        </div>
+    </div>
+    <div class="relative h-64 w-full">
+        <canvas id="edemaChart"></canvas>
+    </div>
+    <div class="mt-4 p-4 bg-slate-800/30 rounded-xl border border-cyan-500/10 text-xs text-slate-400 italic leading-relaxed">
+        <strong>Fundamentação Científica:</strong> O índice ECW/TBW (Água Extracelular / Água Corporal Total) mensura a hidratação sistêmica e a retenção de fluidos intersticiais. Valores ideais encontram-se entre 0.380 e 0.390; acima de 0.390, há indicativo clínico de edema, inflamação crônica ou desbalanço de sódio/potássio.
+        <br/><br/><span class="text-[10px]">Referência ABNT: WANG, Z. et al. Hydration of fat-free body mass: review and critique of a classic body-composition constant. <em>The American Journal of Clinical Nutrition</em>, v. 69, n. 5, p. 833-841, 1999.</span>
+    </div>
+</section>
+
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-l-4 border-fuchsia-500 mb-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <h2 class="text-2xl font-bold text-slate-200">Sensor Sintético: Vitality Score (Equivalente Phase Angle)</h2>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Audit de Datas:</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="vitalityStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-xs">até</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="vitalityEnd" type="date" title="Data Final"/>
+            <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2" onclick="filterVitality()">🔍 AUDITAR VITALIDADE</button>
+        </div>
+    </div>
+    <div class="relative h-64 w-full">
+        <canvas id="vitalityChart"></canvas>
+    </div>
+    <div class="mt-4 p-4 bg-slate-800/30 rounded-xl border border-fuchsia-500/10 text-xs text-slate-400 italic leading-relaxed">
+        <strong>Fundamentação Científica:</strong> O Escore de Vitalidade atua como um derivado matemático do Ângulo de Fase (Phase Angle - PhA) celular, correlacionando a Massa Isenta de Gordura com a Taxa Metabólica Basal normalizada pelo peso. Valores ascendentes demonstram melhoria na integridade da membrana celular e alta reserva metabólica.
+        <br/><br/><span class="text-[10px]">Referência ABNT: NORMAN, K. et al. Phase angle as a prognostic marker in patients with cancer. <em>Clinical Nutrition</em>, v. 25, n. 4, p. 614-619, 2006.</span>
+    </div>
+</section>
+<!-- FIM SENSORES SINTÉTICOS -->
+
+<section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-2 border-l-4 border-rose-500 mb-8">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <h2 class="text-2xl font-bold text-slate-200">Crônica Glicêmica (Google Fit)</h2>
         <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
