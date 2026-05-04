@@ -1373,15 +1373,22 @@
 <div class="fixed inset-0 bg-slate-950 z-[200] hidden flex flex-col p-8 transition-opacity duration-300" id="ecgModal">
 <div class="flex justify-between items-center mb-6">
 <div>
-<h3 class="text-2xl font-black text-rose-500">ECG: Alta Resolução (DII &amp; DIII)</h3>
-<p class="text-slate-400 text-xs mt-1" id="vaticiniumBadge">SINAL BRUTO | 500Hz</p>
+<h3 class="text-2xl font-black text-rose-500">ECG 6-Derivações: Alta Resolução</h3>
+<p class="text-slate-400 text-xs mt-1" id="vaticiniumBadge">SINAL COMPLETO | 500Hz</p>
+<div class="flex gap-2 mt-4 overflow-x-auto custom-scrollbar pb-2" id="ecgLeadSelectors">
+    <button class="px-4 py-2 rounded-lg font-bold text-xs bg-rose-500 text-white border border-rose-400" onclick="switchEcgLead(0, 'Lead I')">Lead I (DI)</button>
+    <button class="px-4 py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700" onclick="switchEcgLead(1, 'Lead II')">Lead II (DII)</button>
+    <button class="px-4 py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700" onclick="switchEcgLead(2, 'Lead III')">Lead III (DIII)</button>
+    <button class="px-4 py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700" onclick="switchEcgLead(3, 'aVR')">aVR</button>
+    <button class="px-4 py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700" onclick="switchEcgLead(4, 'aVL')">aVL</button>
+    <button class="px-4 py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700" onclick="switchEcgLead(5, 'aVF')">aVF</button>
+</div>
 <div class="flex gap-2 mt-2" id="ecgTriggersContainer"></div>
 </div>
 <button class="w-12 h-12 bg-slate-800 rounded-full text-xl" onclick="closeEcgModal()">✕</button>
 </div>
-<div class="flex-1 space-y-4 overflow-y-auto custom-scrollbar">
-<div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead1"></canvas></div>
-<div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead2"></canvas></div>
+<div class="flex-1 space-y-4 overflow-hidden flex flex-col">
+<div class="glass-panel p-4 rounded-xl flex-1 relative w-full h-full"><canvas id="ecgChartActive"></canvas></div>
 </div>
 </div>
 <!-- BRIEFING MATINAL MODAL (Boas-Vindas) -->
