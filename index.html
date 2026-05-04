@@ -1212,6 +1212,46 @@
         <br/><br/><span class="text-[10px]">Referência ABNT: NORMAN, K. et al. Phase angle as a prognostic marker in patients with cancer. <em>Clinical Nutrition</em>, v. 25, n. 4, p. 614-619, 2006.</span>
     </div>
 </section>
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-l-4 border-emerald-500 mb-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <h2 class="text-2xl font-bold text-slate-200">Body Scan 2: Velocidade da Onda de Pulso (VOP / PWV)</h2>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Audit de Datas:</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="pwvStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-xs">até</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="pwvEnd" type="date" title="Data Final"/>
+            <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2" onclick="filterPWV()"> AUDITAR VOP</button>
+        </div>
+    </div>
+    <div class="relative h-64 w-full">
+        <canvas id="pwvChart"></canvas>
+    </div>
+    <div class="mt-4 p-4 bg-slate-800/30 rounded-xl border border-emerald-500/10 text-xs text-slate-400 italic leading-relaxed">
+        <strong>Fundamentação Científica:</strong> A Velocidade da Onda de Pulso (Pulse Wave Velocity - PWV) é um biomarcador autônomo da rigidez arterial, amplamente utilizado para mensurar o envelhecimento cardiovascular real. Uma VOP elevada indica perda de elasticidade na artéria aorta, sendo um preditor forte e independente de eventos isquêmicos e mortalidade cardiovascular global.
+        <br/><br/><span class="text-[10px]">Referência ABNT: LAURENT, S. et al. Expert consensus document on arterial stiffness: methodological issues and clinical applications. <em>European Heart Journal</em>, v. 27, n. 21, p. 2588-2605, 2006.</span>
+    </div>
+</section>
+
+<section class="glass-panel p-8 rounded-2xl shadow-xl border-l-4 border-yellow-500 mb-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <h2 class="text-2xl font-bold text-slate-200">Body Scan 2: Escore de Saúde Nervosa (Função Sudomotora)</h2>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">Audit de Datas:</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="nerveStart" type="date" title="Data Inicial"/>
+            <span class="text-slate-500 text-xs">até</span>
+            <input class="bg-slate-800 text-slate-200 text-xs px-2 py-1.5 rounded outline-none border border-slate-700 w-40 cursor-pointer" id="nerveEnd" type="date" title="Data Final"/>
+            <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] uppercase font-bold px-4 py-2 rounded-lg transition-all ml-2" onclick="filterNerve()"> AUDITAR NERVOS</button>
+        </div>
+    </div>
+    <div class="relative h-64 w-full">
+        <canvas id="nerveChart"></canvas>
+    </div>
+    <div class="mt-4 p-4 bg-slate-800/30 rounded-xl border border-yellow-500/10 text-xs text-slate-400 italic leading-relaxed">
+        <strong>Fundamentação Científica:</strong> O Escore de Saúde Nervosa avalia a atividade eletroquímica das glândulas sudoríparas na planta dos pés. Valores anormais são indicativos precoces de Neuropatia Autonômica Periférica, frequentemente associados a estresse metabólico contínuo, micro-lesões em terminações nervosas e estágios iniciais de diabetes tipo 2.
+        <br/><br/><span class="text-[10px]">Referência ABNT: CASILLINI, G. et al. Sudomotor function: a new piece of the puzzle to detect early diabetic neuropathy. <em>Journal of Diabetes Science and Technology</em>, v. 6, n. 4, p. 805-812, 2012.</span>
+    </div>
+</section>
+
 <!-- FIM SENSORES SINTÉTICOS -->
 
 <section class="glass-panel p-8 rounded-2xl shadow-xl lg:col-span-2 border-l-4 border-rose-500 mb-8">
