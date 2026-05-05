@@ -17,7 +17,6 @@
 <link href="style.css?v=5" rel="stylesheet"/>
 <script src="data.js?v=2026050410"></script>
 <script defer="" src="app.js?v=2026050410"></script>
-<script defer="" src="sandbox_boneco.js?v=2026050411"></script>
 </head>
 <body class="bg-slate-950 text-slate-200 font-sans leading-relaxed selection:bg-blue-500/30" id="body-lock">
 <!-- MOBILE NAVIGATION TOGGLE -->
@@ -378,65 +377,36 @@
 <!-- NOVO: Segmentação de Gordura Bioimpedancia (Withings) -->
 <!-- Grafico Isolado de Gordura Subcutanea -->
 <!-- Grafico de Telemetria Cardiaca Avançada -->
-<!-- MAPA CORPORAL ANTROPOMÉTRICO (SVG INTERATIVO E PAINEL) -->
-<section class="mb-8">
-    <div class="flex flex-col lg:flex-row gap-8 w-full max-h-[85vh]">
-        <!-- Esquerda: Informações do Órgão Selecionado (Fixo) -->
-        <div class="w-full lg:w-1/3 glass-panel p-8 rounded-3xl shadow-2xl flex flex-col h-[700px] overflow-hidden relative" id="detailsPanel">
-            <div class="absolute inset-0 bg-gradient-to-b from-rose-500/5 to-transparent pointer-events-none"></div>
-            
-            <h2 id="panelTitle" class="text-3xl font-black text-white mb-6 pb-4 border-b border-white/10 uppercase tracking-tighter">Selecione uma Região</h2>
-            
-            <!-- Composicao Corporal -->
-            <div id="panelMetrics" class="grid grid-cols-2 gap-4 mb-8 hidden z-10">
-                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
-                    <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Fita Métrica</p>
-                    <p id="panelFita" class="text-xl font-black text-indigo-300">--</p>
-                </div>
-                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
-                    <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Massa Magra</p>
-                    <p id="panelMuscle" class="text-xl font-black text-emerald-400">--</p>
-                </div>
-                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 col-span-2">
-                    <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Gordura Segmentada</p>
-                    <p id="panelFat" class="text-xl font-black text-rose-400">--</p>
-                </div>
-            </div>
-            
-            <!-- Exames -->
-            <div class="flex justify-between items-end mb-4 hidden z-10" id="examsHeader">
-                <h3 class="text-sm font-bold text-rose-400 uppercase tracking-widest flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    Dossiê Médico
-                </h3>
-                <span id="panelExamCount" class="bg-rose-500/20 text-rose-300 px-2 py-1 rounded-md text-xs font-bold border border-rose-500/30">0 Laudos</span>
-            </div>
-            
-            <div id="panelExams" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-4 pr-3 z-10">
-                <div class="flex flex-col items-center justify-center h-full text-center opacity-50">
-                    <svg class="w-16 h-16 text-slate-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                    <p class="text-slate-400 text-lg font-medium">Nenhuma região selecionada.</p>
-                    <p class="text-slate-500 text-sm mt-2">Clique nos marcadores do diagrama.</p>
-                </div>
-            </div>
-        </div>
+<!-- MAPA CORPORAL ANTROPOMÉTRICO -->
+<section class="glass-panel p-4 rounded-2xl shadow-xl lg:col-span-2 flex flex-col items-center relative">
+    <h2 class="text-xs uppercase font-bold text-rose-500 tracking-widest mb-4 absolute top-4 left-4 z-20"><svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>MAPA CORPORAL ANTROPOMÉTRICO</h2>
+    
+    <div class="relative w-full max-w-sm mx-auto flex-1 flex items-center justify-center mt-8">
+        <img alt="Clinical Anatomy" class="block w-full h-auto z-0 opacity-80" src="assets/clinical_body_new.png"/>
+        <svg class="absolute top-0 left-0 w-full h-full z-10" id="humanBodySVG" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" style="mix-blend-mode: screen; pointer-events: none;">
+            <!-- Interatividade injetada via JS -->
+            <g id="organ-nodes" class="pointer-events-auto"></g>
+        </svg>
         
-        <!-- Direita: Mapa Interativo de Alta Precisão (Linhas Dinâmicas JS) -->
-        <div class="w-full lg:w-2/3 relative flex justify-center items-center bg-slate-900/30 rounded-3xl border border-indigo-500/20 shadow-inner overflow-hidden h-[700px]">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-            
-            <!-- Container sem forçar aspecto quadrado -->
-            <div class="relative w-full max-w-lg mx-auto h-full flex items-center justify-center">
-                <img alt="Clinical Anatomy" class="block max-h-full w-auto z-0 opacity-90 drop-shadow-[0_0_25px_rgba(255,255,255,0.05)]" src="assets/clinical_body_new.png"/>
-                
-                <svg class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
-                    <g id="organ-nodes" class="pointer-events-auto"></g>
-                </svg>
+        <!-- Tooltip de Hover -->
+        <div class="absolute bg-slate-900/90 text-white text-xs px-3 py-2 rounded shadow-2xl pointer-events-none opacity-0 transition-opacity duration-200 border border-indigo-500/30 z-30" id="anatomy-tooltip" style="top: 0; left: 0;"></div>
+        
+        <!-- Popup Fixo após Clique (Glassmorphism) -->
+        <div class="absolute bg-slate-900/80 backdrop-blur-md border border-slate-700 p-4 rounded-xl shadow-2xl hidden flex-col z-40 w-64 max-h-80 overflow-y-auto custom-scroll" id="organ-popup" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="flex justify-between items-center mb-2 pb-2 border-b border-slate-700/50">
+                <h3 class="font-bold text-indigo-400 uppercase tracking-widest text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span id="popup-title">Órgão</span>
+                </h3>
+                <button class="text-slate-500 hover:text-rose-500 transition-colors" onclick="document.getElementById('organ-popup').classList.add('hidden')">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="space-y-3" id="popup-content">
+                <!-- Conteudo injetado via JS -->
             </div>
         </div>
     </div>
-
-    <!-- ECG MODAL INJECTED VIA JS OR ALREADY IN BODY -->
 </section>
 <!-- Grafico de IMC e Gordura Visceral -->
 <!-- Grafico de Medidas Anatômicas (Renpho Fita e Segmentação Withings) -->
