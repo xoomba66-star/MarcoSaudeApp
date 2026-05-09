@@ -1241,15 +1241,21 @@
 <div class="fixed inset-0 bg-slate-950 z-[200] hidden flex flex-col p-8 transition-opacity duration-300" id="ecgModal">
 <div class="flex justify-between items-center mb-6">
 <div>
-<h3 class="text-2xl font-black text-rose-500">ECG: Alta Resolução (DII &amp; DIII)</h3>
-<p class="text-slate-400 text-xs mt-1" id="vaticiniumBadge">SINAL BRUTO | 500Hz</p>
+<h3 class="text-2xl font-black text-rose-500">ECG: Alta Resolução (6 Derivações Reconstruídas)</h3>
+<p class="text-slate-400 text-xs mt-1" id="vaticiniumBadge">SINAL BRUTO | 500Hz | Derivações Calculadas: I, aVR, aVL, aVF</p>
 <div class="flex gap-2 mt-2" id="ecgTriggersContainer"></div>
 </div>
 <button class="w-12 h-12 bg-slate-800 rounded-full text-xl" onclick="closeEcgModal()">✕</button>
 </div>
-<div class="flex-1 space-y-4 overflow-y-auto custom-scrollbar">
-<div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead1"></canvas></div>
-<div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead2"></canvas></div>
+<div class="flex-1 overflow-y-auto custom-scrollbar pr-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead1"></canvas></div>
+        <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead2"></canvas></div>
+        <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead3"></canvas></div>
+        <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead4"></canvas></div>
+        <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead5"></canvas></div>
+        <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead6"></canvas></div>
+    </div>
 </div>
 </div>
 <!-- BRIEFING MATINAL MODAL (Boas-Vindas) -->
@@ -1289,23 +1295,6 @@
 <!-- Close ml-20 wrapper -->
 
 
-<!-- INJETADO ECG MODAL DO SANDBOX -->
-    <div class="fixed inset-0 bg-slate-950 z-[200] hidden flex-col p-8 transition-opacity duration-300" id="ecgModal">
-        <div class="flex justify-between items-center mb-6">
-            <div>
-                <h3 class="text-2xl font-black text-rose-500">ECG: Alta Resolução (DII &amp; DIII)</h3>
-                <p class="text-slate-400 text-xs mt-1" id="vaticiniumBadge">SINAL BRUTO | 500Hz</p>
-                <div class="flex gap-2 mt-2" id="ecgTriggersContainer"></div>
-            </div>
-            <button class="w-12 h-12 bg-slate-800 rounded-full text-xl flex items-center justify-center cursor-pointer" onclick="closeEcgModal()">✕</button>
-        </div>
-        <div class="flex-1 space-y-4 overflow-y-auto custom-scroll">
-            <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead1"></canvas></div>
-            <div class="glass-panel p-4 rounded-xl h-64"><canvas id="ecgChartLead2"></canvas></div>
-        </div>
-    </div>
-
-<!-- FIM ECG MODAL -->
 
 </body>
 </html>
