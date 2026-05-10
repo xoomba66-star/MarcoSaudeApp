@@ -66,7 +66,7 @@
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <svg class="h-5 w-5 text-indigo-500 animate-pulse" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </div>
-<input class="block w-full pl-12 pr-32 py-4 bg-slate-900/50 border border-indigo-500/30 rounded-2xl text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all backdrop-blur-sm" id="oracle-query" placeholder="Perguntar ao Oráculo (Ex: Sinergia Losartana + Tadalafila)..." type="text"/>
+<input class="block w-full pl-12 pr-32 py-4 bg-slate-900/50 border border-indigo-500/30 rounded-2xl text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all backdrop-blur-sm" id="oracle-query" placeholder="Perguntar ao Oráculo (Ex: Sinergia Losartana + Tadalafila)..." type="text" onkeypress="if(event.key === 'Enter') askOracleIA()"/>
 <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
 <button class="flex items-center gap-2 px-3 py-2 bg-indigo-500/20 hover:bg-indigo-500/40 rounded-lg transition-all group" id="oracleBtn" onclick="askOracleIA()" title="Perguntar ao Oráculo">
 <span class="text-[10px] font-bold text-indigo-300 group-hover:text-white uppercase tracking-tighter">ENTER</span>
